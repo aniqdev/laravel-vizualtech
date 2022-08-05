@@ -17,7 +17,7 @@ class PublisherFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => fake()->unique()->city(),
         ];
     }
 }
