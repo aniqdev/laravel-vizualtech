@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    Books list
+                    @livewire('homepage-books')
+
                 </div>
             </div>
         </div>

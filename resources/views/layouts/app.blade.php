@@ -13,8 +13,10 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <!-- Styles -->
+    @livewireStyles
+    @vite(['resources/sass/app.scss'])
+
 </head>
 <body>
     <div id="app">
@@ -76,5 +78,9 @@
             @yield('content')
         </main>
     </div>
+
+    <!-- Scripts -->
+    @livewireScripts
+    @vite(['resources/js/app.js'])
 </body>
 </html>
