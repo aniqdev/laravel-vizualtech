@@ -139,7 +139,7 @@ class BookController extends Controller
         }
 
         if ($request->filled('title')) {
-            $book::update(['title' => $request->title]);
+            $book->update(['title' => $request->title]);
         }
 
         if ($request->filled('publisher')) {
@@ -148,21 +148,22 @@ class BookController extends Controller
                 'name' => $request->publisher,
             ]);
 
-            $book::update(['publisher_id' => $publisher->id]);
+            $book->update(['publisher_id' => $publisher->id]);
         }
 
         if ($request->has('authors')) {
 
             $book->authors()->detach();
 
-            $authors_ids = Author::whereIn('name', $request->authors)->pluck('id')->toArray();
-
-            if($authors_ids){
-                $book->authors()->attach($authors_ids);
+            foreach ($request->authors as $author_name) {
+                $author = Author::firstOrCreate([
+                    'name' => $author_name,
+                ]);
+                $book->authors()->attach($author->id);
             }
         }
 
-        $book->update($request->all());
+        $book = Book::with('authors:id,name', 'publisher:id,name')->find($book->id);
 
         return $this->json([
             'book' => $book,
