@@ -3,10 +3,10 @@
 Swagger link:
 [https://aniqdev.github.io/visualtech/swagger/](https://aniqdev.github.io/visualtech/swagger/)
 
-To run swagger
+To run application
 ```sh
-git clone https://github.com/alijumaan/laravel-ecommerce.git
-cd qberry-test/
+git clone https://github.com/aniqdev/laravel-vizualtech.git
+cd laravel-vizualtech/
 composer install
 npm install
 npm run build
