@@ -13,4 +13,14 @@ npm run build
 php artisan migrate --seed
 php artisan serve
 ```
-then go to [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+then open [http://127.0.0.1:8000/](http://127.0.0.1:8000/) in browser
+
+implemented the following api endpoints
+
+```
+GET|HEAD        api/books ............... books list
+POST            api/books ............... store book
+GET|HEAD        api/books/{book} ........ show book by id
+PUT|PATCH       api/books/{book} ........ update book
+DELETE          api/books/{book} ........ destroy book record
+```
