@@ -166,7 +166,7 @@ class BookController extends Controller
 
         return $this->json([
             'book' => $book,
-            'message' => 'Book updated.',
+            'message' => 'Book updated.', 
         ]);
     }
 
