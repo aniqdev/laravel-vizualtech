@@ -48,7 +48,7 @@ class BookController extends Controller
         $book = Book::where('title', $request->title)->first();
 
         if ($book) {
-            $this->update($request, $book->id);
+            return $this->update($request, $book->id);
         }
 
         $rules = [
@@ -82,6 +82,8 @@ class BookController extends Controller
         if($authors_ids){
             $book->authors()->attach($authors_ids);
         }
+
+        $book = Book::with('authors:id,name', 'publisher:id,name')->find($book->id);
 
         return $this->json([
             'book' => $book,
