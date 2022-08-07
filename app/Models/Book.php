@@ -14,6 +14,13 @@ class Book extends Model
         'title',
     ];
 
+    protected $hidden = [
+        'publisher_id',
+        'created_at',
+        'updated_at',
+        'pivot',
+    ];
+
     public function authors()
     {
         return $this->belongsToMany(Author::class);

@@ -8,7 +8,6 @@
               <small>Publisher: {{ $book->publisher->name }}</small>
             </div>
             <p class="mb-1">Authors: {{ $book->authors->implode('name', ', ') }}</p>
-            {{-- <small>{{ $book->publisher->name }}</small> --}}
           </a>
         @endforeach
     </div>
