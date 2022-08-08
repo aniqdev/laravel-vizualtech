@@ -15,24 +15,18 @@ class BookController extends Controller
      */
     public function index()
     {
-        $rules = [
-            'offset' => 'integer|min:0',
-            'limit' => 'integer|min:1|max:100',
-        ];
-
-        $validator = validator(request()->all(), $rules);
-
-        if($validator->fails()){
-            return response()->json([
-                'message' => implode(', ', $validator->messages()->all()),
-            ], 400);
-        }
+        $count = Book::count();
 
         $offset = request('offset', 0);
+        $offset = $this->inRange($offset, 0, $count - 1);
+
         $limit = request('limit', 10);
+        $limit = $this->inRange($limit, 1, 100);
+
         $books = Book::with('authors:id,name', 'publisher:id,name')->offset($offset)->limit($limit)->get();
+        
         return $this->json([
-            'count' => Book::count(),
+            'count' => $count,
             'books' => $books,
         ], 200);
     }
@@ -201,5 +195,12 @@ class BookController extends Controller
     public function json($data, $http_code = 200)
     {
         return response()->json( $data, $http_code, [], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES );
+    }
+
+    public function inRange($num, $min, $max)
+    {
+        if($num < $min) return $min;
+        if($num > $max) return $max;
+        return $num;
     }
 }
