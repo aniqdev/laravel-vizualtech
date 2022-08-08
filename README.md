@@ -1,8 +1,8 @@
 ## Vizualtech test
 
-Swagger links:
-[https://aniqdev.github.io/visualtech/swagger/](https://aniqdev.github.io/visualtech/swagger/)
-[https://aniqdev.github.io/visualtech/redoc/](https://aniqdev.github.io/visualtech/redoc/)
+Swagger links:  
+[https://aniqdev.github.io/visualtech/swagger/](https://aniqdev.github.io/visualtech/swagger/)  
+[https://aniqdev.github.io/visualtech/redoc/](https://aniqdev.github.io/visualtech/redoc/)  
 
 To run application
 ```sh
